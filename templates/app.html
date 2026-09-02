@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume ATS Analyzer</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Resume &middot; ATS Analyzer</h1>
+  <p>Match your resume against a job description, close the gaps, and chat with an AI career coach.</p>
+</header>
+
+<main class="container">
+
+  <!-- Input Section -->
+  <section class="input-grid" id="input-section">
+    <div class="card">
+      <h2>Resume</h2>
+      <textarea id="resume-text" placeholder="Paste your resume text here..."></textarea>
+      <label class="file-label">
+        or upload a file
+        <input type="file" id="resume-file" accept=".txt,.pdf,.doc,.docx">
+      </label>
+    </div>
+
+    <div class="card">
+      <h2>Job Description</h2>
+      <textarea id="jd-text" placeholder="Paste the job description here..."></textarea>
+      <label class="file-label">
+        or upload a file
+        <input type="file" id="jd-file" accept=".txt,.pdf,.doc,.docx">
+      </label>
+    </div>
+  </section>
+
+  <div class="analyze-row">
+    <button id="analyze-btn">Analyze Resume</button>
+    <span id="analyze-status" class="status-text"></span>
+  </div>
+
+  <!-- Results Section -->
+  <section id="results-section" class="results hidden">
+
+    <div class="score-row">
+      <div class="score-card">
+        <div class="score-value" id="total-score">--</div>
+        <div class="score-label">ATS Match Score</div>
+      </div>
+      <div class="score-card">
+        <div class="score-value" id="impact-score">--</div>
+        <div class="score-label">Impact Score</div>
+      </div>
+    </div>
+
+    <div class="keywords-grid">
+      <div class="card">
+        <h3>Matched Keywords</h3>
+        <div id="matched-keywords" class="chip-list"></div>
+      </div>
+      <div class="card">
+        <h3>Missing Keywords</h3>
+        <div id="missing-keywords" class="chip-list"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Action Verbs Found</h3>
+      <div id="action-verbs" class="chip-list"></div>
+    </div>
+
+    <div class="card">
+      <h3>Technical Checks</h3>
+      <ul id="technical-checks" class="checks-list"></ul>
+    </div>
+
+    <div class="card">
+      <h3>Suggestions</h3>
+      <ul id="suggestions-list" class="suggestions-list"></ul>
+    </div>
+
+  </section>
+
+  <!-- Chat Section -->
+  <section id="chat-section" class="card chat-card hidden">
+    <h2>Ask the Career Coach</h2>
+    <div id="chat-window" class="chat-window"></div>
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask how to improve a bullet point, or what to add...">
+      <button id="chat-send-btn">Send</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Powered by Gemini</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
